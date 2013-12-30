@@ -1,4 +1,4 @@
-grammar Parser;
+grammar MessageBox;
 import LiteralParser;
 
 // mb: header_def (enum_def | message_def | service_def)*;
