@@ -1,0 +1,39 @@
+package com.site.infra.proj;
+cc_package infra.proj;
+java_package com.site.infra.proj;
+py_package com.site.infra.proj;
+
+import "infra/proj/base.mb";
+cc_import "iostream";
+
+enum Gender {
+  UNKNOWN = 0;
+  MALE = 1;
+  FEMALE = 2;
+}
+
+message SampleMessage {
+  [keys = (user_name, user_id)]
+  [one = (work_phone, home_phone)]  // one or none -> mutual exclusive
+  [one = (teacher_id, student_id)]
+  [all = (teacher_id, work_phone)]
+  [all = (student_id, home_phone)]  // all or none -> all exist
+  [any = (work_phone, home_phone)]  // any -> at least one exists
+  required string user_name = 1;
+  required fix64 user_id = 2;
+  optional string name = 16 [compression = XZ, threshold = 256];
+  optional string addr = 17;
+  optional string work_phone = 18 [format = PHONE];
+  optional string home_phone = 19 [format = PHONE];
+  optional fix32 teacher_id = 20;
+  optional fix64 student_id = 21;
+  optional list<vint> scores = 22 [packed = true, ordered = true];
+  optional map<Other, vint> friend_scores = 23;
+  optional Gender gender = 100 [default = UNKNOWN];
+}
+
+enum Gender2 {
+  UN_KNOWN = 0;
+  MALE = 1;
+  FEMALE = 2;
+}
