@@ -1,0 +1,43 @@
+package com.zoptimizer.base.msgbox;
+cc_package base.msgbox;
+py_package base.msgbox;
+
+message FieldType {
+  required string name = 1;
+  optional string element = 2;
+  optional string key = 3;
+  optional string value = 4;
+}
+
+enum FieldRuleEnum {
+  REQUIRED = 0;
+  OPTIONAL = 1;
+}
+
+message Field {
+  required FieldRuleEnum rule = 1;
+  required FieldType type = 2;
+  required string name = 3;
+  required vint64 tag = 4;
+  optional list<Option> options = 5;
+}
+
+message Message {
+  optional list<Field> fields = 1;
+  optional list<Option> options = 2;
+}
+
+enum OptionValueTypeEnum {
+  BOOL = 0;
+  INT = 1;
+  FLOAT = 2;
+  STRING = 3;
+  ENUM = 4;
+}
+
+message Option {
+  required bool is_customized = 1;
+  required string name = 2;
+  optional OptionValueTypeEnum type = 3;
+  optional string value = 4;
+}

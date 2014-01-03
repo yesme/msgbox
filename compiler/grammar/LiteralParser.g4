@@ -7,8 +7,9 @@ decimal_literal: '0' | MINUS? POSITIVE_DECIMAL_LITERAL;
 integer_literal: HEX_LITERAL | OCTAL_LITERAL | decimal_literal;
 
 // ----- Literal Value -----
+float_literal: FLOAT_LITERAL;
 bool_value: BOOL_LITERAL;
-number_value: integer_literal | FLOAT_LITERAL;
+number_value: integer_literal | float_literal;
 string_value: STRING_LITERAL;
 literal_value: bool_value | number_value | string_value;
 
@@ -26,7 +27,7 @@ caped_identifier: unqualified_caped_identifier | qualified_prefix unqualified_ca
 mixed_identifier: unqualified_mixed_identifier | qualified_prefix unqualified_mixed_identifier;
 
 // ----- Keywords -----
-type_scalar_literal: TYPE_FLOAT | TYPE_DOUBLE | TYPE_VINT | TYPE_FIX16 | TYPE_FIX32 | TYPE_FIX64 | TYPE_BOOL | TYPE_STRING | TYPE_BYTES;
+type_scalar_literal: TYPE_FLOAT | TYPE_DOUBLE | TYPE_INT16 | TYPE_INT32 | TYPE_INT64 | TYPE_FIX16 | TYPE_FIX32 | TYPE_FIX64 | TYPE_BOOL | TYPE_STRING | TYPE_BYTES;
 type_collection_literal: TYPE_LIST | TYPE_SET | TYPE_MAP;
 field_rule_literal: REQUIRED_LITERAL | OPTIONAL_LITERAL;
 keyword_literal: PACKAGE_LITERAL | IMPORT_LITERAL | ENUM_LITERAL | MESSAGE_LITERAL;
